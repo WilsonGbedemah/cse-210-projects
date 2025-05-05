@@ -4,10 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Input your score: ");
+        Console.Write("Input your grade score: ");
         string input = Console.ReadLine();
         int score = int.Parse(input);
 
+        string letter = "";
 
         if (score >= 90)
         {
@@ -17,7 +18,7 @@ class Program
         {
             letter = "B";
         }
-        else if (score >= 70 score < 80)
+        else if (score >= 70 && score < 80)
         {
             letter = "C";
         }
