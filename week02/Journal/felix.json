@@ -1,0 +1,17 @@
+[
+  {
+    "date": "5/12/2025",
+    "prompt": "What was the best part of your day?",
+    "response": "coding my C#"
+  },
+  {
+    "date": "5/12/2025",
+    "prompt": "What did you learn today?",
+    "response": "i learnt about abstraction in C#"
+  },
+  {
+    "date": "5/12/2025",
+    "prompt": "If I had one thing I could do over today, what would it be?",
+    "response": "improve my coing skills"
+  }
+]

@@ -1,8 +1,17 @@
+using System.Text.Json.Serialization;
+
 public class Entry
 {
-    public string _date = "";
-    public string _promptText = "";
-    public string _entryText = "";
+    [JsonPropertyName("date")]
+    public string _date { get; set; } = "";
+
+    [JsonPropertyName("prompt")]
+    public string _promptText { get; set; } = "";
+
+    [JsonPropertyName("response")]
+    public string _entryText { get; set; } = "";
+
+    public Entry() {}
 
     public Entry(string date, string promptText, string entryText)
     {

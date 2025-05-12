@@ -1,4 +1,5 @@
-using System.IO;
+using System.Text.Json;
+
 
 
 public class Journal
@@ -21,24 +22,23 @@ public class Journal
 
     public void SaveToFile(string filename)
     {
-        using (StreamWriter outputFile = new StreamWriter(filename))
-        {
-            foreach (Entry entry in _entries)
-            {
-                outputFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
-            }
-        }
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        string jsonString = JsonSerializer.Serialize(_entries, options);
+        File.WriteAllText(filename, jsonString);
+        Console.WriteLine($"Entries saved to {filename}");
     }
 
     public void LoadFromFile(string filename)
     {
-        _entries.Clear();
-        string[] lines = File.ReadAllLines(filename);
-        foreach (string line in lines)
+        if (File.Exists(filename))
         {
-            string[] parts = line.Split('|');
-            Entry entry = new Entry(parts[0], parts[1], parts[2]);
-            _entries.Add(entry);
+            string jsonString = File.ReadAllText(filename);
+            _entries = JsonSerializer.Deserialize<List<Entry>>(jsonString);
+            Console.WriteLine($"Entries loaded from {filename}");
+        }
+        else
+        {
+            Console.WriteLine($"File {filename} does not exist.");
         }
     }
 
