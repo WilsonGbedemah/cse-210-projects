@@ -1,28 +1,33 @@
-using System.Text.Json.Serialization;
+using System;
 
 public class Entry
 {
-    [JsonPropertyName("date")]
-    public string _date { get; set; } = "";
-
-    [JsonPropertyName("prompt")]
-    public string _promptText { get; set; } = "";
-
-    [JsonPropertyName("response")]
-    public string _entryText { get; set; } = "";
+    public string date;
+    public string mood;
+    public string promptText;
+    public string entryText;
 
     public Entry() {}
 
-    public Entry(string date, string promptText, string entryText)
+    public Entry(string _date, string _mood, string _prompt, string _entry)
     {
-        _date = date;
-        _promptText = promptText;
-        _entryText = entryText;
+        date = _date;
+        mood = _mood;
+        promptText = _prompt;
+        entryText = _entry;
     }
 
     public void DisplayEntry()
     {
-        Console.WriteLine($"Date: {_date} - Prompt: {_promptText}");
-        Console.WriteLine($"Response: {_entryText}");
+        Console.WriteLine($"Date: {date}");
+        Console.WriteLine($"Mood: {mood}");
+        Console.WriteLine($"Prompt: {promptText}");
+        Console.WriteLine($"Response: {entryText}");
+        Console.WriteLine(new string('-', 60));
+    }
+
+    public string ToTextFormat()
+    {
+        return $"Date: {date}\nMood: {mood}\nPrompt: {promptText}\nResponse: {entryText}\n------------------------------------------------------------";
     }
 }
