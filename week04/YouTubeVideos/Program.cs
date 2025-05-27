@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -40,12 +41,12 @@ class Program
         // Display video information
         foreach (Video video in videos)
         {
-            Console.WriteLine($"Title: {video.GetTitle()}");
-            Console.WriteLine($"Author: {video.GetAuthor()}");
-            Console.WriteLine($"Length: {video.GetLengthInSeconds()} seconds");
+            Console.WriteLine($"Title: {video._title}");
+            Console.WriteLine($"Author: {video._author}");
+            Console.WriteLine($"Length: {video._lengthInSeconds} seconds");
             Console.WriteLine($"Number of Comments: {video.GetNumberOfComments()}");
             Console.WriteLine("Comments:");
-            foreach (Comment comment in video.GetComments())
+            foreach (Comment comment in video._comments)
             {
                 Console.WriteLine(comment.GetCommentInfo());
             }
