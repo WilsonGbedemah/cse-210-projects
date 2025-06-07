@@ -26,20 +26,17 @@ public class BreathingActivity : Activity
         DisplayEndingMessage();
     }
 
-    private void AnimateBreath(string direction)
+private void AnimateBreath(string direction)
+{
+    int durationPerPhase = 4; // You can make this customizable later
+    Console.WriteLine($"{direction} for {durationPerPhase} seconds");
+
+    for (int i = 1; i <= durationPerPhase; i++)
     {
-        Console.Write($"{direction} ");
-        
-        // The longer the delay, the slower the appearance (simulates slowing breath)
-        int[] delays = { 200, 300, 400, 500, 600 };  // Fast to slow
-
-        if (direction.ToLower().Contains("out"))
-            Array.Reverse(delays); // Make exhale start slow and speed up
-
-        foreach (int delay in delays)
-        {
-            Console.Write(".");
-            Thread.Sleep(delay);
-        }
+        Console.Write($"{i}");
+        Thread.Sleep(1000); // 1 second delay
+        Console.Write("\b \b"); // Erase previous number (optional for cleaner look)
     }
+}
+
 }
